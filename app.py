@@ -1,31 +1,24 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, redirect, url_for
+from controllers.auth import auth_bp
+from controllers.dashboard import dashboard_bp
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
-def login():
-    errors = {}
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+# Register blueprints
+app.register_blueprint(auth_bp, url_prefix='/auth')
+app.register_blueprint(dashboard_bp, url_prefix='/admin')
 
-        # Validate username and password
-        if not username:
-            errors['username'] = 'Username is required.'
-        if not password:
-            errors['password'] = 'Password is required.'
-        elif len(password) < 8:
-            errors['password'] = 'Password must be at least 8 characters long.'
+@app.route('/')
+def index():
+    return redirect(url_for('auth.login'))
 
-        if not errors:
-            # Process login (authentication logic here)
-            return redirect(url_for('success'))
-
-    return render_template('views/login.html', errors=errors)
-
-@app.route('/success')
-def success():
-    return 'Login successful!'
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('views/404.html'), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# Print all routes
+for rule in app.url_map.iter_rules():
+    print(rule)
