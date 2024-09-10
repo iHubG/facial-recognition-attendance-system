@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./templates/views/*.html"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'face-recognition': "url('/static/img/face-recognition.jpg')",
+      },
+    },
   },
   plugins: [],
 }

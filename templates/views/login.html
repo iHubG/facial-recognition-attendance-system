@@ -3,35 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Facial Recognition Attendance System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
 </head>
 <body class="bg-sky-100">
     <div class="container w-full m-auto flex items-center justify-center h-screen font-sans">
-        <div class="flex w-80 shadow px-5 py-5 flex-col rounded-lg border bg-white">
-            <h2 class="text-center text-2xl mb-5">Login</h2>
-            <form method="post" action="/auth/login">
-                <div class="flex flex-col gap-2 mb-3">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Username" class="p-2 rounded-lg text-base outline-none border border-gray-200" autocomplete="off" value="{{ request.form.get('username', '') }}">
-                    {% if errors.username %}
-                        <span class="text-red-500">{{ errors.username }}</span>
-                    {% endif %}
-                </div>
-                <div class="flex flex-col gap-2 mb-3">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" class="p-2 rounded-lg text-base outline-none border border-gray-200" autocomplete="off">
-                    {% if errors.password %}
-                        <span class="text-red-500">{{ errors.password }}</span>
-                    {% endif %}
-                </div>
-                <div class="flex gap-2 mb-5">
-                    <input id="show-pass" type="checkbox">
-                    <label for="show-pass" class="text-sm">Show password</label>
-                </div>
-             
-                <input type="submit" value="Login" name="submit" class="p-1 border bg-blue-600 w-full rounded text-white cursor-pointer hover:opacity-80">
-            </form>
+        <div class="flex w-auto shadow rounded-lg border bg-white">
+            <div class="flex w-96 px-5 py-6 flex-col bg-white bg-face-recognition bg-cover bg-center rounded-l-lg">
+                <h2 class="text-center text-3xl text-gray-300 mb-5">Facial Recognition Attendance System</h2>
+            </div>
+
+            <div class="flex w-96 px-8 py-6 flex-col bg-white rounded-r-lg">
+                <h2 class="text-center text-2xl mb-5">Login</h2>
+                <form method="post" action="/auth/login">
+                    <div class="flex flex-col gap-2 mb-3">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Username" class="p-2 rounded-lg text-base outline-none border border-gray-200" autocomplete="off" value="{{ request.form.get('username', '') }}">
+                        {% if errors.username %}
+                            <span class="text-red-500">{{ errors.username }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="flex flex-col gap-2 mb-3">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password" class="p-2 rounded-lg text-base outline-none border border-gray-200" autocomplete="off">
+                        {% if errors.password %}
+                            <span class="text-red-500">{{ errors.password }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="flex gap-2 mb-5">
+                        <input id="show-pass" type="checkbox">
+                        <label for="show-pass" class="text-sm">Show password</label>
+                    </div>
+                 
+                    <input type="submit" value="Login" name="submit" class="p-1 border bg-blue-600 w-full rounded text-white cursor-pointer hover:opacity-80">
+                </form>
+            </div>
         </div>
     </div>
 
