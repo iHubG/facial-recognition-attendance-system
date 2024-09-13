@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <script src="{{ url_for('static', filename='dist/chart.umd.js') }}"></script>
 </head>
-<body class="flex h-screen bg-sky-100 font-sans">
+<body class="flex h-max bg-sky-100 font-sans">
     <div class="w-64 bg-gray-800 text-white fixed top-0 bottom-0 p-4 flex flex-col">
         <div>
             <h2 class="text-xl font-bold mb-8 text-center">Admin</h2>
@@ -54,9 +55,140 @@
         </div>
         <div class="p-4">
             <div id="dashboard" class="page hidden">
-                <div class="bg-white rounded shadow p-2">
-                    <h2 class="text-xl font-semibold">Dashboard</h2>
-                  
+                <div class="rounded p-4">
+                    <h2 class="text-xl font-semibold mb-5">Dashboard</h2>
+                    <div class="grid grid-cols-3 gap-4 mb-10">
+                        <div class="stat shadow rounded bg-white">
+                            <div class="stat-figure text-secondary">
+                              <div class="avatar">
+                                <div class="w-16 rounded-full">
+                                  <img src="../static/img/users.png" alt="users"/>
+                                </div>
+                              </div>
+                            </div>                           
+                            <div class="stat-title">Total Users</div>
+                            <div class="stat-value">1200</div>
+                        </div>
+                        <div class="stat shadow rounded bg-white">
+                            <div class="stat-figure text-secondary">
+                              <div class="avatar">
+                                <div class="w-16 rounded-full">
+                                  <img src="../static/img/hat.png" alt="hat"/>
+                                </div>
+                              </div>
+                            </div>                           
+                            <div class="stat-title">Students</div>
+                            <div class="stat-value">500</div>
+                        </div>
+                        <div class="stat shadow rounded bg-white">
+                            <div class="stat-figure text-secondary">
+                              <div class="avatar">
+                                <div class="w-16 rounded-full">
+                                  <img src="../static/img/book.png" alt="book"/>
+                                </div>
+                              </div>
+                            </div>                           
+                            <div class="stat-title">Teachers</div>
+                            <div class="stat-value">50</div>
+                        </div>
+                        <div class="stat shadow rounded bg-white">
+                            <div class="stat-figure text-secondary">
+                              <div class="avatar">
+                                <div class="w-16 rounded-full">
+                                  <img src="../static/img/book.png" alt="book"/>
+                                </div>
+                              </div>
+                            </div>                           
+                            <div class="stat-title">Total Attendance Count</div>
+                            <div class="stat-value">902</div>
+                        </div>
+                        <div class="stat shadow rounded bg-white">
+                            <div class="stat-figure text-secondary">
+                              <div class="avatar">
+                                <div class="w-16 rounded-full">
+                                  <img src="../static/img/book.png" alt="book"/>
+                                </div>
+                              </div>
+                            </div>                           
+                            <div class="stat-title">Total Absences</div>
+                            <div class="stat-value">100</div>
+                        </div>
+                        <div class="stat shadow rounded bg-white">
+                            <div class="stat-figure text-secondary">
+                              <div class="avatar">
+                                <div class="w-16 rounded-full">
+                                  <img src="../static/img/book.png" alt="book"/>
+                                </div>
+                              </div>
+                            </div>                           
+                            <div class="stat-title">Daily Attendance</div>
+                            <div class="stat-value">500</div>
+                        </div>
+                        <div class="stat shadow rounded bg-white">
+                            <div class="stat-figure text-secondary">
+                              <div class="avatar">
+                                <div class="w-16 rounded-full">
+                                  <img src="../static/img/book.png" alt="book"/>
+                                </div>
+                              </div>
+                            </div>                           
+                            <div class="stat-title">Daily Absences</div>
+                            <div class="stat-value">40</div>
+                        </div>
+                        
+                    </div>
+                    <h2>Monthly Data</h2>
+                    <canvas id="barChart"></canvas>
+                    <script>
+                        // Ensure Chart.js is loaded before running this script
+                
+                        // Sample data
+                        const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']; // Example months
+                        const data = {
+                            labels: labels,
+                            datasets: [{
+                                label: 'My First Dataset',
+                                data: [100, 59, 80, 81, 56, 55, 40],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 205, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(201, 203, 207, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(255, 159, 64)',
+                                    'rgb(255, 205, 86)',
+                                    'rgb(75, 192, 192)',
+                                    'rgb(54, 162, 235)',
+                                    'rgb(153, 102, 255)',
+                                    'rgb(201, 203, 207)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        };
+                
+                        // Chart configuration
+                        const config = {
+                            type: 'bar',
+                            data: data,
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            },
+                        };
+                
+                        // Render the chart
+                        const ctx = document.getElementById('barChart').getContext('2d');
+                        new Chart(ctx, config);
+                    </script>
                 </div>       
             </div>
             <div id="attendance" class="page hidden">
