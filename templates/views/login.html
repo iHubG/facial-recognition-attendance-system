@@ -15,7 +15,7 @@
 
             <div class="flex w-96 px-8 py-6 flex-col bg-white rounded-r-lg">
                 <h2 class="text-center text-2xl mb-5">Login</h2>
-                <form method="post" action="/auth/login">
+                <form method="post" action="{{ url_for('auth.login') }}">
                     <div class="flex flex-col gap-2 mb-3">
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" placeholder="Username" class="p-2 rounded-lg text-base outline-none border border-gray-200" autocomplete="off" value="{{ request.form.get('username', '') }}">
@@ -30,11 +30,25 @@
                             <span class="text-red-500">{{ errors.password }}</span>
                         {% endif %}
                     </div>
+                    {% if errors.auth %}
+                        <div class="mb-3">
+                            <span class="text-red-500">{{ errors.auth }}</span>
+                        </div>
+                    {% endif %}
+                    {% if success_message %}
+                        <div class="mb-3">
+                            <span class="text-green-500">{{ success_message }}</span>
+                        </div>
+                        <script>
+                            setTimeout(function() {
+                                window.location.href = "{{ url_for('dashboard.dashboard') }}";
+                            }, 1000); // Delay of 1 second
+                        </script>
+                    {% endif %}
                     <div class="flex gap-2 mb-5">
                         <input id="show-pass" type="checkbox">
                         <label for="show-pass" class="text-sm">Show password</label>
                     </div>
-                 
                     <input type="submit" value="Login" name="submit" class="p-1 border bg-blue-600 w-full rounded text-white cursor-pointer hover:opacity-80">
                 </form>
             </div>

@@ -3,8 +3,8 @@ from controllers.auth import auth_bp
 from controllers.dashboard import dashboard_bp
 
 app = Flask(__name__)
+app.secret_key = 'ab87467099377d9e0c3d8e30d6c32dc3'  
 
-# Register blueprints
 app.register_blueprint(auth_bp, url_prefix='/auth')
 app.register_blueprint(dashboard_bp, url_prefix='/admin')
 
@@ -19,6 +19,5 @@ def page_not_found(e):
 if __name__ == '__main__':
     app.run(debug=True)
 
-# Print all routes
 for rule in app.url_map.iter_rules():
     print(rule)

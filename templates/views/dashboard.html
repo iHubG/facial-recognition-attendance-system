@@ -39,7 +39,7 @@
             </ul>
         </div>
         <div class="mt-auto">
-            <a href="/" id="link-logout" class="p-2 rounded hover:bg-sky-600 cursor-pointer flex items-center gap-5">
+            <a href="/admin/logout" id="link-logout" class="p-2 rounded hover:bg-sky-600 cursor-pointer flex items-center gap-5">
                 <img src="../static/img/logout.png" alt="logout" class="w-6">
                 <p>Logout</p>
             </a>
@@ -61,7 +61,7 @@
                         <div class="stat shadow rounded bg-white">
                             <div class="stat-figure text-secondary">
                               <div class="avatar">
-                                <div class="w-16 rounded-full">
+                                <div class="w-16">
                                   <img src="../static/img/users.png" alt="users"/>
                                 </div>
                               </div>
@@ -72,7 +72,7 @@
                         <div class="stat shadow rounded bg-white">
                             <div class="stat-figure text-secondary">
                               <div class="avatar">
-                                <div class="w-16 rounded-full">
+                                <div class="w-16">
                                   <img src="../static/img/hat.png" alt="hat"/>
                                 </div>
                               </div>
@@ -83,7 +83,7 @@
                         <div class="stat shadow rounded bg-white">
                             <div class="stat-figure text-secondary">
                               <div class="avatar">
-                                <div class="w-16 rounded-full">
+                                <div class="w-16">
                                   <img src="../static/img/book.png" alt="book"/>
                                 </div>
                               </div>
@@ -94,30 +94,41 @@
                         <div class="stat shadow rounded bg-white">
                             <div class="stat-figure text-secondary">
                               <div class="avatar">
-                                <div class="w-16 rounded-full">
-                                  <img src="../static/img/book.png" alt="book"/>
+                                <div class="w-16">
+                                  <img src="../static/img/staff.png" alt="book"/>
                                 </div>
                               </div>
                             </div>                           
-                            <div class="stat-title">Total Attendance Count</div>
-                            <div class="stat-value">902</div>
+                            <div class="stat-title">Staffs</div>
+                            <div class="stat-value">25</div>
                         </div>
                         <div class="stat shadow rounded bg-white">
                             <div class="stat-figure text-secondary">
                               <div class="avatar">
-                                <div class="w-16 rounded-full">
-                                  <img src="../static/img/book.png" alt="book"/>
+                                <div class="w-16">
+                                  <img src="../static/img/attendance.png" alt="book"/>
+                                </div>
+                              </div>
+                            </div>                           
+                            <div class="stat-title">Total Attendance</div>
+                            <div class="stat-value">10002</div>
+                        </div>
+                        <div class="stat shadow rounded bg-white">
+                            <div class="stat-figure text-secondary">
+                              <div class="avatar">
+                                <div class="w-16">
+                                  <img src="../static/img/absent.png" alt="book"/>
                                 </div>
                               </div>
                             </div>                           
                             <div class="stat-title">Total Absences</div>
-                            <div class="stat-value">100</div>
+                            <div class="stat-value">500</div>
                         </div>
                         <div class="stat shadow rounded bg-white">
                             <div class="stat-figure text-secondary">
                               <div class="avatar">
-                                <div class="w-16 rounded-full">
-                                  <img src="../static/img/book.png" alt="book"/>
+                                <div class="w-16">
+                                  <img src="../static/img/attendance.png" alt="book"/>
                                 </div>
                               </div>
                             </div>                           
@@ -127,8 +138,8 @@
                         <div class="stat shadow rounded bg-white">
                             <div class="stat-figure text-secondary">
                               <div class="avatar">
-                                <div class="w-16 rounded-full">
-                                  <img src="../static/img/book.png" alt="book"/>
+                                <div class="w-16">
+                                  <img src="../static/img/absent.png" alt="book"/>
                                 </div>
                               </div>
                             </div>                           
@@ -147,8 +158,8 @@
                         const data = {
                             labels: labels,
                             datasets: [{
-                                label: 'My First Dataset',
-                                data: [100, 59, 80, 81, 56, 55, 40],
+                                label: 'Attendance Count',
+                                data: [1200, 1259, 3480, 3481, 2256, 2255, 2340],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)',
                                     'rgba(255, 159, 64, 0.2)',
