@@ -62,13 +62,14 @@ while True:
 
     # Display the results
     for (top, right, bottom, left), name in zip(face_locations, face_names):
-        # Draw a rectangle around the face
-        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+    # Draw a rectangle around the face
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)  # Green rectangle
 
         # Draw a label with the name below the face
-        cv2.rectangle(frame, (left, bottom - 25), (right, bottom), (0, 0, 255), cv2.FILLED)
+        cv2.rectangle(frame, (left, bottom - 25), (right, bottom), (0, 255, 0), cv2.FILLED)  # Green filled rectangle
         font = cv2.FONT_HERSHEY_DUPLEX
-        cv2.putText(frame, name, (left + 6, bottom - 6), font, 0.5, (255, 255, 255), 1)
+        cv2.putText(frame, name, (left + 6, bottom - 6), font, 0.5, (0, 0, 0), 1)  # Black text
+
 
     # Display the resulting image
     cv2.imshow('Video', frame)
