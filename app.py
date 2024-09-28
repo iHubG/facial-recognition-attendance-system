@@ -45,5 +45,7 @@ if __name__ == '__main__':
 
     app.run(host='127.0.0.1', port=5500, ssl_context=context, debug=True)
 
+#for rule in app.url_map.iter_rules():
+#    print(rule)
 
 
