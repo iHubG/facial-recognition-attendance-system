@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facial Recognition</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../static/css/style.css">
-    <script src="../node_modules/chart.js/dist/chart.umd.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <script src="{{ url_for('static', filename='dist/chart.umd.js') }}"></script>
 </head>
-<body class="bg-sky-100 font-sans">
-    <main class="grid grid-cols-10 gap-10 p-10 h-screen">
+<body class="bg-sky-100 font-sans h-screen">
+    <a href="/" class="absolute top-0 left-0 w-fit p-1 px-4 border border-gray-300 bg-white rounded-full m-5 hover:bg-gray-100">Login as Admin</a>
+    <main class="grid grid-cols-10 gap-10 p-10 pt-20 2xl:pt-10 h-auto bg-sky-100">
         <section class="col-span-4 flex flex-col gap-16 items-center p-5 2xl:py-20">
             <div class="flex flex-col gap-5 w-full items-center px-5">
                 <h2 class="text-center font-semibold text-2xl">Facial Recognition</h2>
                 <div class="rounded w-96 h-96 bg-white">
-                    <img src="../static/img/face-scanner.png" alt="yow" class="object-cover w-full h-full rounded">
+                    <!--<img src="../static/img/face-scanner.png" alt="yow" class="object-cover w-full h-full rounded">-->
+                    <img src="{{ url_for('faceRecognition.video_feed') }}" alt="yow" class="object-cover w-full h-full rounded">
                 </div>
             </div>
             <div class="flex w-96 items-center rounded bg-white shadow">
@@ -129,7 +131,7 @@
                         <td class="text-gray-600 border-b border-gray-300 p-1 text-center">09/29/2024 7:30 AM</td>
                     </tr>
                 </table>
-                <button class="rounded-full w-fit mx-auto p-2 px-4 text-sm border border-gray-300 hover:bg-gray-300">Load More</button>
+                <button class="rounded-full w-fit mx-auto p-2 px-4 text-sm border border-gray-300 hover:bg-gray-100">Load More</button>
 
             </div>
         </section>

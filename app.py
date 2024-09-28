@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 from controllers.auth import auth_bp
 from controllers.dashboard import dashboard_bp
+from controllers.faceRecognition import faceRecognition_bp
 import ssl
 import os
 import secrets
@@ -25,6 +26,7 @@ app.secret_key = load_or_generate_secret_key()
 
 app.register_blueprint(auth_bp, url_prefix='/auth')
 app.register_blueprint(dashboard_bp, url_prefix='/admin')
+app.register_blueprint(faceRecognition_bp, url_prefix='/user')
 
 @app.route('/')
 def index():
@@ -43,7 +45,5 @@ if __name__ == '__main__':
 
     app.run(host='127.0.0.1', port=5500, ssl_context=context, debug=True)
 
-for rule in app.url_map.iter_rules():
-    print(rule)
 
 

@@ -1256,6 +1256,12 @@ html {
   outline-offset: 2px;
 }
 
+.mockup-phone .display {
+  overflow: hidden;
+  border-radius: 40px;
+  margin-top: -25px;
+}
+
 .mockup-browser .mockup-browser-toolbar .input {
   position: relative;
   margin-left: auto;
@@ -1557,16 +1563,50 @@ html {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .bottom-0 {
   bottom: 0px;
+}
+
+.right-0 {
+  right: 0px;
 }
 
 .top-0 {
   top: 0px;
 }
 
+.left-0 {
+  left: 0px;
+}
+
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
+.col-span-6 {
+  grid-column: span 6 / span 6;
+}
+
 .m-auto {
   margin: auto;
+}
+
+.m-5 {
+  margin: 1.25rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .mb-10 {
@@ -1601,6 +1641,10 @@ html {
   margin-top: auto;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -1619,6 +1663,18 @@ html {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-auto {
+  height: auto;
 }
 
 .w-16 {
@@ -1641,8 +1697,25 @@ html {
   width: auto;
 }
 
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .w-full {
   width: 100%;
+}
+
+.w-2\/5 {
+  width: 40%;
+}
+
+.w-20 {
+  width: 5rem;
+}
+
+.w-3\/5 {
+  width: 60%;
 }
 
 .max-w-48 {
@@ -1663,6 +1736,14 @@ html {
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-10 {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1693,12 +1774,24 @@ html {
   gap: 1.25rem;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.gap-16 {
+  gap: 4rem;
+}
+
 .overflow-x-auto {
   overflow-x: auto;
 }
 
 .rounded {
   border-radius: 0.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-lg {
@@ -1717,6 +1810,10 @@ html {
 
 .border {
   border-width: 1px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
 }
 
 .border-gray-200 {
@@ -1764,6 +1861,11 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .bg-face-recognition {
   background-image: url('/static/img/face-recognition.jpg');
 }
@@ -1776,6 +1878,11 @@ html {
   background-position: center;
 }
 
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -1786,6 +1893,14 @@ html {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .px-5 {
@@ -1811,6 +1926,20 @@ html {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.pt-20 {
+  padding-top: 5rem;
 }
 
 .text-center {
@@ -1843,6 +1972,11 @@ html {
 
 .text-xl {
   font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
@@ -1894,6 +2028,11 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -1925,6 +2064,11 @@ html {
   background-color: rgb(2 132 199 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
@@ -1937,6 +2081,25 @@ html {
 
 .hover\:opacity-80:hover {
   opacity: 0.8;
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:p-5 {
+    padding: 1.25rem;
+  }
+
+  .\32xl\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .\32xl\:pt-0 {
+    padding-top: 0px;
+  }
+
+  .\32xl\:pt-10 {
+    padding-top: 2.5rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

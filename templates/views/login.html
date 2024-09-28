@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
 </head>
 <body class="bg-sky-100">
-    <div class="container w-full m-auto flex items-center justify-center h-screen font-sans">
-        <div class="flex w-auto shadow rounded-lg border bg-white">
+
+    <div class="container w-full m-auto flex flex-col items-center justify-center h-screen font-sans">
+        <a href="/user/faceRecognition" class="absolute top-0 right-0 w-fit p-1 px-4 border border-gray-300 bg-white rounded-full m-5 hover:bg-gray-100">Facial Recognition</a> 
+
+        <div class="flex w-auto shadow rounded-lg border bg-white m-auto">
             <div class="flex w-96 px-5 py-6 flex-col bg-white bg-face-recognition bg-cover bg-center rounded-l-lg">
                 <h2 class="text-center text-3xl text-gray-300 mb-5">Facial Recognition Attendance System</h2>
             </div>
