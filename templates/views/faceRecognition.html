@@ -25,10 +25,10 @@
                     <p class="text-base text-green-500">Present</p>
                 </div>
                 <div class="flex-col w-3/5 p-5 px-0">
-                    <h5 class="text-lg font-semibold">Macalinao, Ian P.</h5>
+                    <h5 class="text-lg font-semibold" id="detected-name">Macalinao, Ian P.</h5>
                     <p class="text-base">Grade 9 Santan</p>
                     <p class="text-base">Pinoma National High School</p>
-                    <p class="text-base mt-5">09/28/2024 7:00 AM</p>
+                    <p class="text-base mt-5" id="detected-time">09/28/2024 7:00 AM</p>
                 </div>
             </div>
         </section>
@@ -135,6 +135,22 @@
 
             </div>
         </section>
-    </main>    
+    </main> 
+    
+    <script>
+        // Function to fetch detected info periodically
+        function fetchDetectedInfo() {
+            fetch('/user/get_detected_info')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('detected-name').innerText = data.name || "Unknown";
+                    document.getElementById('detected-time').innerText = data.datetime || "N/A";
+                })
+                .catch(error => console.error('Error fetching detected info:', error));
+        }
+
+        // Fetch detected info every second
+        setInterval(fetchDetectedInfo, 1000);
+    </script>
 </body>
 </html>

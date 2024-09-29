@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 from controllers.auth import auth_bp
 from controllers.dashboard import dashboard_bp
-from controllers.faceRecognition import faceRecognition_bp
+from controllers.faceRecognition import faceRecognition_bp, camera
 import ssl
 import os
 import secrets
@@ -30,6 +30,7 @@ app.register_blueprint(faceRecognition_bp, url_prefix='/user')
 
 @app.route('/')
 def index():
+    camera.stop()
     return redirect(url_for('auth.login'))
 
 @app.errorhandler(404)
