@@ -201,49 +201,102 @@
                 </div>       
             </div>
             <div id="attendance" class="page hidden">
-                <div class="rounded p-4">
-                    <h2 class="text-xl font-semibold">Attendance Records</h2>
-                   
-                </div>     
+              <div class="rounded p-4">
+                <h2 class="text-xl font-semibold">Attendance Records</h2>
+                <div class="overflow-x-auto bg-white mt-5 rounded shadow p-4">
+                  <div class="flex p-4 justify-between">
+                    <input type="text" placeholder="Search" class="input input-bordered w-full max-w-xs" />
+                    <div class="flex gap-2">
+                      <select title="sort-grade" class="select select-bordered w-full max-w-48">
+                        <option disabled selected>Grade Level</option>
+                        <option>Grade 7</option>
+                        <option>Grade 8</option>
+                        <option>Grade 9</option>
+                        <option>Grade 10</option>
+                        <option>Grade 11</option>
+                        <option>Grade 12</option>
+                      </select>
+                      <select title="sort-grade" class="select select-bordered w-full max-w-48">
+                        <option disabled selected>Section</option>
+                        <option>Section 1</option>
+                        <option>Section 2</option>
+                        <option>Section 3</option>     
+                      </select>
+                      <select title="sort-date" class="select select-bordered w-full max-w-48">
+                        <option disabled selected>Sort By</option>
+                        <option>Date Modified</option>
+                        <option>Name</option>
+                      </select>
+                    </div>  
+                  </div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Grade & Section</th>
+                        <th>Date & Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>2</th>
+                        <td>Cy Ganderton</td>
+                        <td>Present</td>
+                        <td>Grade 11 ICT-A</td>
+                        <td>09/17/2024 7:20 AM</td>
+                      </tr>
+                      <tr>
+                        <th>1</th>
+                        <td>Cy Ganderton</td>
+                        <td>Present</td>
+                        <td>Grade 11 ICT-A</td>
+                        <td>09/17/2024 7:00 AM</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>    
+              </div>     
             </div>
             <div id="activity" class="page hidden">
-                <div class="rounded p-4">
-                    <h2 class="text-xl font-semibold">Activity Logs</h2>
-                    <div class="overflow-x-auto bg-white mt-5 rounded shadow p-4">
-                        <div class="flex p-4 justify-between">
-                            <input type="text" placeholder="Search" class="input input-bordered w-full max-w-xs" />
-                            <select title="sort-date" class="select select-bordered w-full max-w-48">
-                                <option disabled selected>Sort By</option>
-                                <option>Date Modified</option>
-                                <option>Name</option>
-                            </select>
-                        </div>
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>Name</th>
-                              <th>Activity</th>
-                              <th>Date & Time</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th>2</th>
-                              <td>Cy Ganderton</td>
-                              <td>Logged Out</td>
-                              <td>09/17/2024 10:20 pm</td>
-                            </tr>
-                            <tr>
-                              <th>1</th>
-                              <td>Cy Ganderton</td>
-                              <td>Logged In</td>
-                              <td>09/17/2024 10:00 pm</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                </div>     
+              <div class="rounded p-4">
+                <h2 class="text-xl font-semibold">Activity Logs</h2>
+                <div class="overflow-x-auto bg-white mt-5 rounded shadow p-4">
+                  <div class="flex p-4 justify-between">
+                    <input type="text" placeholder="Search" class="input input-bordered w-full max-w-xs" />
+                    <select title="sort-date" class="select select-bordered w-full max-w-48">
+                        <option disabled selected>Sort By</option>
+                        <option>Date Modified</option>
+                        <option>Name</option>
+                    </select>
+                  </div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Activity</th>
+                        <th>Date & Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>2</th>
+                        <td>Cy Ganderton</td>
+                        <td>Logged Out</td>
+                        <td>09/17/2024 10:20 pm</td>
+                      </tr>
+                      <tr>
+                        <th>1</th>
+                        <td>Cy Ganderton</td>
+                        <td>Logged In</td>
+                        <td>09/17/2024 10:00 pm</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>     
             </div>
             <div id="backup" class="page hidden">
                 <div class="rounded p-4">
