@@ -1,83 +1,69 @@
 import cv2
 import face_recognition
-import sqlite3
-from datetime import datetime, timedelta
+import pickle
 
-# Initialize variables for last insertion time and interval
-last_insert_time = datetime.min
-insert_interval = timedelta(minutes=5)  # 5-minute interval
+# Load the trained SVM classifier
+with open('svm_classifier.pkl', 'rb') as f:
+    clf = pickle.load(f)
 
-# Function to insert data into SQLite database
-def insert_data(name, entry_datetime, period):
-    conn = sqlite3.connect('users.db')
-    c = conn.cursor()
-    c.execute("INSERT INTO users (name, entry_datetime, period) VALUES (?, ?, ?)", (name, entry_datetime, period))
-    conn.commit()
-    conn.close()
-
-# Initialize variables
-face_locations = []
-face_encodings = []
-face_names = []
-
-# Load a sample image and learn how to recognize it (for demonstration purposes)
-known_image = face_recognition.load_image_file("ian.jpg")
-known_encoding = face_recognition.face_encodings(known_image)[0]
-
-# Initialize the webcam
+# Try opening the default webcam (camera index 0)
 video_capture = cv2.VideoCapture(0)
 
+# Check if the webcam was successfully opened
+if not video_capture.isOpened():
+    print("Error: Unable to access the webcam.")
+else:
+    print("Webcam accessed successfully!")
+
 while True:
-    # Capture frame-by-frame
+    # Capture frame from webcam
     ret, frame = video_capture.read()
 
-    # Convert the frame from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
-    rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    # Check if frame was captured successfully
+    if not ret:
+        print("Failed to capture frame.")
+        break
 
-    # Find all the faces in the current frame of video
-    face_locations = face_recognition.face_locations(rgb_frame)
-    face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
+    # Resize the frame if necessary (to ensure it fits within screen size)
+    frame_resized = cv2.resize(frame, (640, 480))
 
-    face_names = []
-    for face_encoding in face_encodings:
-        # Compare each face found in the frame with the known face
-        match = face_recognition.compare_faces([known_encoding], face_encoding)
-        name = "Unknown"
+    # Convert BGR frame to RGB for face_recognition
+    rgb_frame = frame_resized[:, :, ::-1]  # Convert BGR to RGB
+    
+    # Detect faces using face_recognition (try using "hog" model)
+    face_locations = face_recognition.face_locations(rgb_frame, model="hog")
 
-        if match[0]:
-            name = "Ian Macalinao"
+    # Debugging: print the face locations to check if the detection is happening
+    print(f"Detected faces at locations: {face_locations}")
 
-        face_names.append(name)
+    # If faces are detected, extract face encodings and make predictions
+    if len(face_locations) > 0:
+        try:
+            # Correctly extract face encodings using the face locations
+            face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
+            print(f"Extracted face encodings: {face_encodings}")  # Debugging line
+            
+            # Predict the names of detected faces
+            for face_encoding in face_encodings:
+                name = clf.predict([face_encoding])
+                print(f"Detected: {name[0]}")
+                
+            # Draw rectangles around detected faces
+            for (top, right, bottom, left) in face_locations:
+                cv2.rectangle(frame_resized, (left, top), (right, bottom), (0, 255, 0), 2)
 
-        # Get current date and time
-        now = datetime.now()
-        entry_datetime = now.strftime("%Y-%m-%d %H:%M:%S")
-        period = now.strftime("%p")
+        except Exception as e:
+            print(f"Error extracting face encodings: {e}")
+    else:
+        print("No faces detected")
 
-        # Check if 5 minutes have passed since last insertion
-        if (now - last_insert_time) > insert_interval:
-            # Insert data into SQLite database
-            insert_data(name, entry_datetime, period)
-            last_insert_time = now  # Update last insertion time
+    # Display the frame with bounding boxes around faces
+    cv2.imshow('Camera Feed with Face Detection', frame_resized)
 
-    # Display the results
-    for (top, right, bottom, left), name in zip(face_locations, face_names):
-    # Draw a rectangle around the face
-        cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)  # Green rectangle
-
-        # Draw a label with the name below the face
-        cv2.rectangle(frame, (left, bottom - 25), (right, bottom), (0, 255, 0), cv2.FILLED)  # Green filled rectangle
-        font = cv2.FONT_HERSHEY_DUPLEX
-        cv2.putText(frame, name, (left + 6, bottom - 6), font, 0.5, (0, 0, 0), 1)  # Black text
-
-
-    # Display the resulting image
-    cv2.imshow('Video', frame)
-
-    # Exit the loop if the 'q' key is pressed
+    # Exit loop when 'q' is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Release the webcam and close all windows
+# Release the webcam and close any open windows
 video_capture.release()
 cv2.destroyAllWindows()
